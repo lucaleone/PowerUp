@@ -5,10 +5,18 @@
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <Authors>Luca Leone</Authors>
     <Company></Company>
-    <Description>Extender: extension methos library</Description>
+    <Description>PowerUp extension methods library for .Net CORE</Description>
     <PackageProjectUrl>https://luca-leone.firebaseapp.com/</PackageProjectUrl>
-    <PackageId>Extender.Azure</PackageId>
+    <PackageId>PowerupCore</PackageId>
     <Product>Extender.Azure</Product>
+    <ApplicationIcon></ApplicationIcon>
+    <Copyright>2018 Luca Leone All Rights Reserved</Copyright>
+    <RepositoryUrl>https://github.com/lucaleone/PowerUp</RepositoryUrl>
+    <PackageTags>netCore, extensionmethods</PackageTags>
+    <PackageIconUrl>https://raw.githubusercontent.com/lucaleone/Personal-website/master/Git%20resources/PowerUpNuget.png</PackageIconUrl>
+    <PackageLicenseUrl>https://opensource.org/licenses/MIT</PackageLicenseUrl>
+    <Win32Resource />
+    <LangVersion>7.3</LangVersion>
   </PropertyGroup>
 
 </Project>

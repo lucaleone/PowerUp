@@ -1,22 +1,49 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace PowerUp
 {
+    /// <summary>
+    ///     Class for Collection method extensions
+    /// </summary>
     public static class CollectionExtensions
     {
+        /// <summary>
+        ///     Removes a collection of elements from a collection.
+        /// </summary>
+        /// <typeparam name="T">Type of elements.</typeparam>
+        /// <param name="lst">Collection to be updated.</param>
+        /// <param name="removeList">Collection of elements to remove.</param>
         public static void RemoveRange<T>(this ICollection<T> lst, IEnumerable<T> removeList)
         {
-            foreach (var item in removeList)
-            {
-                if (lst.Contains(item))
-                    lst.Remove(item);
-            }
+            if (lst.Any() && removeList.IsNotNull())
+                foreach (var item in removeList)
+                    if (lst.Contains(item))
+                        lst.Remove(item);
         }
 
-        public static int GetLastIndex<T>(this IEnumerable<T> obj)
+        /// <summary>
+        /// Performs a deep copy
+        /// </summary>
+        /// <typeparam name="T">ICloneable elements of the collection</typeparam>
+        /// <param name="listToClone">Collection to be cloned</param>
+        /// <returns>A collection copy</returns>
+        public static IEnumerable<T> Clone<T>(this ICollection<T> listToClone) where T : ICloneable
         {
-            return obj.Count() - 1;
+            if (listToClone.IsNull())
+                return null;
+            return listToClone.Select(item => (T)item.Clone()).ToList();
         }
+
+
+        /// <summary>
+        ///     Returns the last index of a collection.
+        /// </summary>
+        /// <typeparam name="T">Type of elements</typeparam>
+        /// <param name="obj">A Collection</param>
+        /// <returns>The last index</returns>
+        public static int GetLastIndex<T>(this IEnumerable<T> obj) =>
+            obj.Count() - 1;
     }
 }

@@ -2,10 +2,22 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
+    <ApplicationIcon></ApplicationIcon>
+    <Authors>Luca Leone</Authors>
+    <Description>PowerUp extension methods library for .Net CORE</Description>
+    <Copyright>2018 Luca Leone All Rights Reserved</Copyright>
+    <PackageProjectUrl>https://luca-leone.firebaseapp.com/</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/lucaleone/PowerUp</RepositoryUrl>
+    <PackageId>PowerupCore.Azure</PackageId>
+    <PackageTags>netCore, Azure, extensionmethods</PackageTags>
+    <PackageIconUrl>https://raw.githubusercontent.com/lucaleone/Personal-website/master/Git%20resources/PowerUpNuget.png</PackageIconUrl>
+    <PackageLicenseUrl>https://opensource.org/licenses/MIT</PackageLicenseUrl>
+    <Win32Resource />
+    <LangVersion>7.3</LangVersion>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="WindowsAzure.Storage" Version="7.2.1" />
+    <PackageReference Include="WindowsAzure.Storage" Version="9.3.2" />
   </ItemGroup>
 
 </Project>

@@ -2,6 +2,9 @@
 
 namespace PowerUp
 {
+    /// <summary>
+    ///     Class for Generic method extensions
+    /// </summary>
     public static class GenericExtensions
     {
         /// <summary>
@@ -23,7 +26,23 @@ namespace PowerUp
         public static bool IsNull<T>(this T obj) where T : class =>
             obj == null;
 
+        /// <summary>
+        ///     Verify that the object is not null.
+        /// </summary>
+        /// <param name="obj">Object to verify</param>
+        /// <returns>True if the object is not null.</returns>
+        public static bool IsNotNull<T>(this T obj) where T : class =>
+            obj != null;
 
+        /// <summary>
+        ///     Verify that the object value is included between the lower and upper bound.
+        /// </summary>
+        /// <typeparam name="T">IComparable object</typeparam>
+        /// <param name="obj"></param>
+        /// <param name="lower">Upper bound.</param>
+        /// <param name="upper">Lower bound.</param>
+        /// <param name="option">Exclusive or inclusive between option.</param>
+        /// <returns>True is the object value in included between the lower and upper bound.</returns>
         public static bool Between<T>(this T obj,
                                       T lower,
                                       T upper,
@@ -36,6 +55,9 @@ namespace PowerUp
         }
     }
 
+    /// <summary>
+    ///     Exclusive or inclusive between option
+    /// </summary>
     public enum BetweenOptions
     {
         Exclusive,

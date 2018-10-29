@@ -28,11 +28,5 @@ namespace PowerUp.Tests
             Assert.Equal(EnumValueDescription, testObject.GetDescription());
         }
 
-        [Fact]
-        public void GetDescription_GivenNonEnum_ThrowsError()
-        {
-            var testObject = new DateTime();
-            Assert.Throws<ArgumentException>(() => testObject.GetDescription());
-        }
     }
 }
