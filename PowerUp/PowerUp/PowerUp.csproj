@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <Authors>Luca Leone</Authors>
+    <Company></Company>
+    <Description>Extender: extension methos library</Description>
+    <PackageProjectUrl>https://luca-leone.firebaseapp.com/</PackageProjectUrl>
+    <PackageId>Extender.Azure</PackageId>
+    <Product>Extender.Azure</Product>
+  </PropertyGroup>
+
+</Project>
