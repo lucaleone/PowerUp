@@ -43,7 +43,11 @@ namespace PowerUp
         /// <typeparam name="T">Type of elements</typeparam>
         /// <param name="obj">A Collection</param>
         /// <returns>The last index</returns>
-        public static int GetLastIndex<T>(this IEnumerable<T> obj) =>
-            obj.Count() - 1;
+        public static int GetLastIndex<T>(this IEnumerable<T> obj)
+        {
+            if (obj.Any())
+                return obj.Count() - 1;
+            throw new ArgumentException("The collection must not be empty.");
+        }
     }
 }

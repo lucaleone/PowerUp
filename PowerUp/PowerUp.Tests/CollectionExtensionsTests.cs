@@ -50,6 +50,7 @@ namespace PowerUp.Tests
             var deleteList = new List<string>();
             var expectedCount = sourceList.Count;
 
+            Assert.Empty(deleteList);
             sourceList.RemoveRange(deleteList);
 
             Assert.Equal(expectedCount, sourceList.Count);
@@ -62,6 +63,7 @@ namespace PowerUp.Tests
             List<string> deleteList = null;
             var expectedCount = sourceList.Count;
 
+            Assert.Null(deleteList);
             sourceList.RemoveRange(deleteList);
 
             Assert.Equal(expectedCount, sourceList.Count);
@@ -79,41 +81,72 @@ namespace PowerUp.Tests
             Assert.Null(clone);
         }
 
-        class Rock : ICloneable
+        private class Rock : ICloneable
         {
-            int _weight;
-            bool _round;
-            bool _mossy;
+            public int weight;
+            public bool round;
 
-            public Rock(int weight, bool round, bool mossy)
+            public Rock(int weight, bool round)
             {
-                this._weight = weight;
-                this._round = round;
-                this._mossy = mossy;
+                this.weight = weight;
+                this.round = round;
             }
 
             public object Clone()
             {
-                return new Rock(this._weight, this._round, this._mossy);
+                return new Rock(weight, round);
             }
 
-            public override string ToString()
+            public override bool Equals(object obj)
             {
-                return string.Format("weight = {0}, round = {1}, mossy = {2}",
-                    this._weight,
-                    this._round,
-                    this._mossy);
+                var rock = obj as Rock;
+                return rock != null &&
+                       weight == rock.weight &&
+                       round == rock.round;
+            }
+
+            public override int GetHashCode()
+            {
+                return HashCode.Combine(weight, round);
             }
         }
-        //[Fact]
-        //public void Clone_GivenValidList_ShouldReturnClone()
-        //{
-        //    var testList = _fixture.Create<List<Rock>>();
-        //    var clone = testList.Clone();
 
-        //    Assert.StrictEqual(clone, testList);
-        //}
+        [Fact]
+        public void Clone_OneListModified_ShouldNotAffectTheFirstOne()
+        {
+            var testList = _fixture.Create<List<Rock>>();
+            var clone = testList.Clone();
+
+            Assert.NotNull(clone);
+            Assert.Equal(clone, testList);
+            Assert.False(clone.First() == testList.First());
+            clone.First().weight = _fixture.Create<int>();
+            Assert.NotEqual(clone, testList);
+        }
         #endregion
 
+        #region GetLastIndex
+        [Fact]
+        public void GetLastIndex_GivenValidList_ShouldReturnLenghtMinusOne()
+        {
+            var sourceList = new List<int>();
+            var lenght = _fixture.Create<int>();
+            for (var i = 0; i < lenght; i++)
+            {
+                sourceList.Add(_fixture.Create<int>());
+            }
+            Assert.NotEmpty(sourceList);
+            Assert.Equal(sourceList.GetLastIndex(), lenght - 1);
+        }
+
+        [Fact]
+        public void GetLastIndex_GivenEmptyList_ShouldTrowsArgumentException()
+        {
+            var sourceList = new List<int>();
+
+            Assert.Empty(sourceList);
+            Assert.Throws<ArgumentException>(() => sourceList.GetLastIndex());
+        }
+        #endregion
     }
 }
