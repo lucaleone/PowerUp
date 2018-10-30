@@ -10,6 +10,7 @@ namespace PowerUp
         /// <summary>
         ///     Throws System.ArgumentNullException if the given argument is null.
         /// </summary>
+        /// <see cref="https://github.com/lucaleone/PowerUp/new/master?readme=1#throwifnull" />
         /// <param name="obj">Object to verify</param>
         /// <param name="varName">The name of the variable to test</param>
         /// <exception cref="ArgumentNullException">The value is null.</exception>
@@ -22,6 +23,7 @@ namespace PowerUp
         /// <summary>
         ///     Verify that a object is null.
         /// </summary>
+        /// <see cref="https://github.com/lucaleone/PowerUp/new/master?readme=1#isnull-and-isnotnull" />
         /// <param name="obj">Object to verify</param>
         /// <returns>True if the object is null.</returns>
         public static bool IsNull<T>(this T obj) where T : class =>
@@ -30,6 +32,7 @@ namespace PowerUp
         /// <summary>
         ///     Verify that a nullable object is null.
         /// </summary>
+        /// <see cref="https://github.com/lucaleone/PowerUp/new/master?readme=1#isnull-and-isnotnull" />
         /// <param name="obj">Object to verify</param>
         /// <returns>True if the object is null.</returns>
         public static bool IsNull<T>(this T? obj) where T : struct =>
@@ -38,6 +41,7 @@ namespace PowerUp
         /// <summary>
         ///     Verify that a object is not null.
         /// </summary>
+        /// <see cref="https://github.com/lucaleone/PowerUp/new/master?readme=1#isnull-and-isnotnull" />
         /// <param name="obj">Object to verify</param>
         /// <returns>True if the object is not null.</returns>
         public static bool IsNotNull<T>(this T obj) where T : class =>
@@ -46,14 +50,16 @@ namespace PowerUp
         /// <summary>
         ///     Verify that a nullable object is not null.
         /// </summary>
+        /// <see cref="https://github.com/lucaleone/PowerUp/new/master?readme=1#isnull-and-isnotnull" />
         /// <param name="obj">Object to verify</param>
         /// <returns>True if the nullable object is not null.</returns>
         public static bool IsNotNull<T>(this T? obj) where T : struct =>
             obj.HasValue;
 
         /// <summary>
-        ///     Verify that the object value is included between the lower and upper bound.
+        ///     Verify that the object value is between the lower and upper bound.
         /// </summary>
+        /// <see cref="https://github.com/lucaleone/PowerUp/blob/master/README.md#between" />
         /// <typeparam name="T">IComparable object</typeparam>
         /// <param name="obj"></param>
         /// <param name="lower">Upper bound.</param>

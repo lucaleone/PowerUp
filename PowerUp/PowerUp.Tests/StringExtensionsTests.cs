@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using Ploeh.AutoFixture;
 using Xunit;
 
@@ -15,13 +13,11 @@ namespace PowerUp.Tests
 
         private readonly IFixture _fixture;
 
-        #region IsInteger
-        [Fact]
-        public void IsInteger_GivenValidIntegerString_ShouldReturnTrue()
+        private enum TestEnum
         {
-            var integerString = _fixture.Create<int>().ToString();
-
-            Assert.True(integerString.IsInteger());
+            Val1,
+            Val2,
+            Val3
         }
 
         [Fact]
@@ -31,6 +27,37 @@ namespace PowerUp.Tests
 
             Assert.False(notIntegerString.IsInteger());
         }
-        #endregion
+
+        [Fact]
+        public void IsInteger_GivenValidIntegerString_ShouldReturnTrue()
+        {
+            var integerString = _fixture.Create<int>().ToString();
+
+            Assert.True(integerString.IsInteger());
+        }
+
+        [Fact]
+        public void ToEnum_GivenEmptyString_ShouldThrowArgumentNullException()
+        {
+            string nullString = null;
+
+            Assert.Throws<ArgumentNullException>(() => nullString.ToEnum<TestEnum>());
+        }
+
+        [Fact]
+        public void ToEnum_GivenInvalidString_ShouldThrowArgumentException()
+        {
+            var notExistingEnumValString = _fixture.Create<string>();
+
+            Assert.Throws<ArgumentException>(() => notExistingEnumValString.ToEnum<TestEnum>());
+        }
+
+        [Fact]
+        public void ToEnum_GivenValidString_ReturnEnumValue()
+        {
+            var val1EnumString = TestEnum.Val1.ToString();
+
+            Assert.Equal(TestEnum.Val1, val1EnumString.ToEnum<TestEnum>());
+        }
     }
 }

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 
 namespace PowerUp
@@ -10,26 +9,9 @@ namespace PowerUp
     public static class EnumExtensions
     {
         /// <summary>
-        ///     Convert a Sting to an enum value of type <see cref="T"/>
-        /// </summary>
-        /// <typeparam name="T">Enum type.</typeparam>
-        /// <param name="str">String to be parsed</param>
-        /// <param name="ignoreCase">Ignore string character case.</param>
-        /// <exception cref="ArgumentNullException">The attribute str is null or empty.</exception>
-        /// <exception cref="ArgumentException">The attribute str cannot be parsed.</exception>
-        /// <returns>An enum value.</returns>
-        public static T ToEnum<T>(this string str, bool ignoreCase=true) where T : Enum
-        {
-            if(string.IsNullOrEmpty(str))
-                throw new ArgumentNullException("The string is null.");
-            if(Enum.TryParse(typeof(T), str, ignoreCase, out var res))
-                return (T)res;
-            throw new ArgumentException($"{str} does not belong to {typeof(T)}. Valid values: {Enum.GetValues(typeof(T))}");
-        }
-
-        /// <summary>
         ///     Gets DescriptionAttribute of one enum value
         /// </summary>
+        /// <see cref="https://github.com/lucaleone/PowerUp/blob/master/README.md#getdescription" />
         /// <typeparam name="T">Enum type.</typeparam>
         /// <param name="enumValue">Enum value from which to get the DescriptionAttribute</param>
         /// <exception cref="ArgumentException">The enum value does not have a DescriptionAttribute.</exception>

@@ -3,12 +3,13 @@ using Microsoft.WindowsAzure.Storage;
 
 namespace PowerUp.Azure
 {
-    public static class CloudStorageAccountHelper
+    public static class AzureExtensions
     {
         /// <summary>
         ///     Parses redundantly the 2 connection strings and returns a Microsoft.WindowsAzure.Storage.CloudStorageAccount
         ///     created from the connection string.
         /// </summary>
+        /// <see cref="https://github.com/lucaleone/PowerUp/blob/master/README.md#azureextensions" />
         /// <param name="connectionString1">CloudStorage main connection string</param>
         /// <param name="connectionString2">CloudStorage secondary connection string</param>
         /// <exception cref="ArgumentNullException">Thrown if connectionString is null or empty.</exception>

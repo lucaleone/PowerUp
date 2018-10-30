@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using Ploeh.AutoFixture;
 using Xunit;
 
@@ -15,101 +13,6 @@ namespace PowerUp.Tests
 
         private readonly IFixture _fixture;
 
-        #region ThrowIfNull
-        [Fact]
-        public void ThrowIfNull_GivenNull_ShouldThrowArgumentNullException()
-        {
-            object nullObject = null;
-
-            Assert.Null(nullObject);
-            Assert.Throws<ArgumentNullException>(()=> nullObject.ThrowIfNull(nameof(nullObject)));
-        }
-
-        [Fact]
-        public void ThrowIfNull_GivenNotNull_ShouldThrowArgumentNullException()
-        {
-            var nullObject = new object();
-
-            nullObject.ThrowIfNull(nameof(nullObject));
-            Assert.NotNull(nullObject);
-        }
-        #endregion
-
-        #region IsNull
-        [Fact]
-        public void IsNull_GivenNull_ShouldReturnTrue()
-        {
-            object nullObject = null;
-
-            Assert.Null(nullObject);
-            Assert.True(nullObject.IsNull());
-        }
-
-        [Fact]
-        public void IsNull_GivenNotNull_ShouldReturnFalse()
-        {
-            var nullObject = new object();
-
-            Assert.NotNull(nullObject);
-            Assert.False(nullObject.IsNull());
-        }
-
-        [Fact]
-        public void IsNull_GivenNullableNull_ShouldReturnTrue()
-        {
-            int? nullObject = null;
-
-            Assert.True(nullObject.IsNull());
-        }
-
-        [Fact]
-        public void IsNull_GivenNullableNotNull_ShouldReturnFalse()
-        {
-            int? nullObject = _fixture.Create<int>();
-
-            Assert.NotNull(nullObject);
-            Assert.False(nullObject.IsNull());
-        }
-        #endregion
-
-        #region IsNotNull
-        [Fact]
-        public void IsNotNull_GivenNull_ShouldReturnFalse()
-        {
-            object nullObject = null;
-
-            Assert.Null(nullObject);
-            Assert.False(nullObject.IsNotNull());
-        }
-
-        [Fact]
-        public void IsNotNull_GivenNotNull_ShouldReturnTrue()
-        {
-            var nullObject = new object();
-
-            Assert.NotNull(nullObject);
-            Assert.True(nullObject.IsNotNull());
-        }
-
-        [Fact]
-        public void IsNotNull_GivenNullableNull_ShouldReturnFalse()
-        {
-            int? nullObject = null;
-
-            Assert.False(nullObject.IsNotNull());
-        }
-
-        [Fact]
-        public void IsNotNull_GivenNullableNotNull_ShouldReturnTrue()
-        {
-            int? nullObject = _fixture.Create<int>();
-
-            Assert.NotNull(nullObject);
-            Assert.True(nullObject.IsNotNull());
-        }
-        #endregion
-
-        #region Between
         [Fact]
         public void BetweenExclusive_GivenBetweenRange_ShouldReturnTrue()
         {
@@ -175,6 +78,93 @@ namespace PowerUp.Tests
             Assert.True(betweenVal3 == upperBound3);
             Assert.True(betweenVal3.Between(lowerBound3, upperBound3, BetweenOptions.Inclusive));
         }
-        #endregion
+
+        [Fact]
+        public void IsNotNull_GivenNotNull_ShouldReturnTrue()
+        {
+            var nullObject = new object();
+
+            Assert.NotNull(nullObject);
+            Assert.True(nullObject.IsNotNull());
+        }
+
+        [Fact]
+        public void IsNotNull_GivenNull_ShouldReturnFalse()
+        {
+            object nullObject = null;
+
+            Assert.Null(nullObject);
+            Assert.False(nullObject.IsNotNull());
+        }
+
+        [Fact]
+        public void IsNotNull_GivenNullableNotNull_ShouldReturnTrue()
+        {
+            int? nullObject = _fixture.Create<int>();
+
+            Assert.NotNull(nullObject);
+            Assert.True(nullObject.IsNotNull());
+        }
+
+        [Fact]
+        public void IsNotNull_GivenNullableNull_ShouldReturnFalse()
+        {
+            int? nullObject = null;
+
+            Assert.False(nullObject.IsNotNull());
+        }
+
+        [Fact]
+        public void IsNull_GivenNotNull_ShouldReturnFalse()
+        {
+            var nullObject = new object();
+
+            Assert.NotNull(nullObject);
+            Assert.False(nullObject.IsNull());
+        }
+
+        [Fact]
+        public void IsNull_GivenNull_ShouldReturnTrue()
+        {
+            object nullObject = null;
+
+            Assert.Null(nullObject);
+            Assert.True(nullObject.IsNull());
+        }
+
+        [Fact]
+        public void IsNull_GivenNullableNotNull_ShouldReturnFalse()
+        {
+            int? nullObject = _fixture.Create<int>();
+
+            Assert.NotNull(nullObject);
+            Assert.False(nullObject.IsNull());
+        }
+
+        [Fact]
+        public void IsNull_GivenNullableNull_ShouldReturnTrue()
+        {
+            int? nullObject = null;
+
+            Assert.True(nullObject.IsNull());
+        }
+
+        [Fact]
+        public void ThrowIfNull_GivenNotNull_ShouldThrowArgumentNullException()
+        {
+            var notNullObject = new object();
+
+            notNullObject.ThrowIfNull(nameof(notNullObject));
+            Assert.NotNull(notNullObject);
+        }
+
+        [Fact]
+        public void ThrowIfNull_GivenNull_ShouldThrowArgumentNullException()
+        {
+            object nullObject = null;
+
+            Assert.Null(nullObject);
+            Assert.Throws<ArgumentNullException>(() => nullObject.ThrowIfNull(nameof(nullObject)));
+        }
     }
 }

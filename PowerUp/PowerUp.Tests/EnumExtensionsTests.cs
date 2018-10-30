@@ -1,6 +1,6 @@
-﻿using Ploeh.AutoFixture;
-using System;
+﻿using System;
 using System.ComponentModel;
+using Ploeh.AutoFixture;
 using Xunit;
 
 namespace PowerUp.Tests
@@ -17,44 +17,9 @@ namespace PowerUp.Tests
 
         private enum TestEnum
         {
-            [Description(EnumValueDescription)]
-            ValWithDesc = 1,
+            [Description(EnumValueDescription)] ValWithDesc = 1,
             ValNoDesc = 2,
-            AnotherNoDesc =3
-        }
-
-        #region ToEnum
-        [Fact]
-        public void ToEnum_GivenValidString_ReturnEnumValue()
-        {
-            var anotherNoDescString = TestEnum.ValWithDesc.ToString();
-
-            Assert.Equal(TestEnum.ValWithDesc, anotherNoDescString.ToEnum<TestEnum>());
-        }
-
-        [Fact]
-        public void ToEnum_GivenInvalidString_ShouldThrowArgumentException()
-        {
-            var notExistingEnumValString = _fixture.Create<string>();
-
-            Assert.Throws<ArgumentException>(() => notExistingEnumValString.ToEnum<TestEnum>());
-        }
-
-        [Fact]
-        public void ToEnum_GivenEmptyString_ShouldThrowArgumentNullException()
-        {
-            string nullString = null;
-
-            Assert.Throws<ArgumentNullException>(() => nullString.ToEnum<TestEnum>());
-        }
-        #endregion
-
-        #region GetDescription
-        [Fact]
-        public void GetDescription_GivenEnumWithDescription_ReturnEnumToString()
-        {
-            var testObject = TestEnum.ValWithDesc;
-            Assert.Equal(EnumValueDescription, testObject.GetDescription());
+            AnotherNoDesc = 3
         }
 
         [Fact]
@@ -63,6 +28,12 @@ namespace PowerUp.Tests
             var testObject = TestEnum.ValNoDesc;
             Assert.Throws<ArgumentException>(() => testObject.GetDescription());
         }
-        #endregion
+
+        [Fact]
+        public void GetDescription_GivenEnumWithDescription_ReturnEnumToString()
+        {
+            var testObject = TestEnum.ValWithDesc;
+            Assert.Equal(EnumValueDescription, testObject.GetDescription());
+        }
     }
 }

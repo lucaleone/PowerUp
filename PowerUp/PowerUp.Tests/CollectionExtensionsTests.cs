@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using Ploeh.AutoFixture;
 using Xunit;
 
@@ -16,75 +15,10 @@ namespace PowerUp.Tests
 
         private readonly IFixture _fixture;
 
-        #region RemoveRange
-        [Fact]
-        public void RemoveRange_GivenListContainsElements_ShouldRemoveCommonOnes()
-        {
-            var sharedElements = _fixture.Create<List<string>>();
-            var deleteList = sharedElements.Clone();
-            var testList = _fixture.Create<List<string>>();
-            var expectedResultList = testList.Clone();
-            testList.AddRange(sharedElements);
-
-            testList.RemoveRange(deleteList);
-
-            Assert.Equal(expectedResultList, testList);
-        }
-
-        [Fact]
-        public void RemoveRange_GivenListNotContainsElements_ShouldRemoveNothing()
-        {
-            var sourceList = _fixture.Create<List<string>>();
-            var deleteList = _fixture.Create<List<string>>();
-            var expectedCount = sourceList.Count;
-
-            sourceList.RemoveRange(deleteList);
-
-            Assert.Equal(expectedCount, sourceList.Count);
-        }
-
-        [Fact]
-        public void RemoveRange_GivenEmptyListToRemove_ShouldRemoveNothing()
-        {
-            var sourceList = _fixture.Create<List<string>>();
-            var deleteList = new List<string>();
-            var expectedCount = sourceList.Count;
-
-            Assert.Empty(deleteList);
-            sourceList.RemoveRange(deleteList);
-
-            Assert.Equal(expectedCount, sourceList.Count);
-        }
-
-        [Fact]
-        public void RemoveRange_GivenNullListToRemove_ShouldRemoveNothing()
-        {
-            var sourceList = _fixture.Create<List<string>>();
-            List<string> deleteList = null;
-            var expectedCount = sourceList.Count;
-
-            Assert.Null(deleteList);
-            sourceList.RemoveRange(deleteList);
-
-            Assert.Equal(expectedCount, sourceList.Count);
-        }
-        #endregion
-
-        #region Clone
-        [Fact]
-        public void Clone_GivenNullList_ShouldReturnNull()
-        {
-            List<string> testList = null;
-
-            var clone = testList.Clone();
-
-            Assert.Null(clone);
-        }
-
         private class Rock : ICloneable
         {
+            public readonly bool round;
             public int weight;
-            public bool round;
 
             public Rock(int weight, bool round)
             {
@@ -112,6 +46,16 @@ namespace PowerUp.Tests
         }
 
         [Fact]
+        public void Clone_GivenNullList_ShouldReturnNull()
+        {
+            List<string> testList = null;
+
+            var clone = testList.Clone();
+
+            Assert.Null(clone);
+        }
+
+        [Fact]
         public void Clone_OneListModified_ShouldNotAffectTheFirstOne()
         {
             var testList = _fixture.Create<List<Rock>>();
@@ -121,22 +65,7 @@ namespace PowerUp.Tests
             Assert.Equal(clone, testList);
             Assert.False(clone.First() == testList.First());
             clone.First().weight = _fixture.Create<int>();
-            Assert.NotEqual(clone, testList);
-        }
-        #endregion
-
-        #region GetLastIndex
-        [Fact]
-        public void GetLastIndex_GivenValidList_ShouldReturnLenghtMinusOne()
-        {
-            var sourceList = new List<int>();
-            var lenght = _fixture.Create<int>();
-            for (var i = 0; i < lenght; i++)
-            {
-                sourceList.Add(_fixture.Create<int>());
-            }
-            Assert.NotEmpty(sourceList);
-            Assert.Equal(sourceList.GetLastIndex(), lenght - 1);
+            Assert.NotEqual(clone.First().weight, testList.First().weight);
         }
 
         [Fact]
@@ -147,6 +76,71 @@ namespace PowerUp.Tests
             Assert.Empty(sourceList);
             Assert.Throws<ArgumentException>(() => sourceList.GetLastIndex());
         }
-        #endregion
+
+        [Fact]
+        public void GetLastIndex_GivenValidList_ShouldReturnLenghtMinusOne()
+        {
+            var sourceList = new List<int>();
+            var lenght = _fixture.Create<int>();
+            for (var i = 0; i < lenght; i++)
+            {
+                sourceList.Add(_fixture.Create<int>());
+            }
+
+            Assert.NotEmpty(sourceList);
+            Assert.Equal(sourceList.GetLastIndex(), lenght - 1);
+        }
+
+        [Fact]
+        public void RemoveRange_GivenEmptyListToRemove_ShouldRemoveNothing()
+        {
+            var sourceList = _fixture.Create<List<string>>();
+            var deleteList = new List<string>();
+            var expectedCount = sourceList.Count;
+
+            Assert.Empty(deleteList);
+            sourceList.RemoveRange(deleteList);
+
+            Assert.Equal(expectedCount, sourceList.Count);
+        }
+
+        [Fact]
+        public void RemoveRange_GivenListContainsElements_ShouldRemoveCommonOnes()
+        {
+            var sharedElements = _fixture.Create<List<string>>();
+            var deleteList = sharedElements.Clone();
+            var testList = _fixture.Create<List<string>>();
+            var expectedResultList = testList.Clone();
+            testList.AddRange(sharedElements);
+
+            testList.RemoveRange(deleteList);
+
+            Assert.Equal(expectedResultList, testList);
+        }
+
+        [Fact]
+        public void RemoveRange_GivenListNotContainsElements_ShouldRemoveNothing()
+        {
+            var sourceList = _fixture.Create<List<string>>();
+            var deleteList = _fixture.Create<List<string>>();
+            var expectedCount = sourceList.Count;
+
+            sourceList.RemoveRange(deleteList);
+
+            Assert.Equal(expectedCount, sourceList.Count);
+        }
+
+        [Fact]
+        public void RemoveRange_GivenNullListToRemove_ShouldRemoveNothing()
+        {
+            var sourceList = _fixture.Create<List<string>>();
+            List<string> deleteList = null;
+            var expectedCount = sourceList.Count;
+
+            Assert.Null(deleteList);
+            sourceList.RemoveRange(deleteList);
+
+            Assert.Equal(expectedCount, sourceList.Count);
+        }
     }
 }
