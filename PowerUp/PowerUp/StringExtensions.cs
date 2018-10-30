@@ -10,7 +10,7 @@
         /// </summary>
         /// <returns>True if the string content is an integer.</returns>
         public static bool IsInteger(this string s) =>
-            int.TryParse(s, out var output);
+            int.TryParse(s, out _);
 
         /// <summary>
         ///     Replaces one or more format items in a string with the string representation of a specified object.

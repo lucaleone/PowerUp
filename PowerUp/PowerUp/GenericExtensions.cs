@@ -10,6 +10,7 @@ namespace PowerUp
         /// <summary>
         ///     Throws System.ArgumentNullException if the given argument is null.
         /// </summary>
+        /// <param name="obj">Object to verify</param>
         /// <param name="varName">The name of the variable to test</param>
         /// <exception cref="ArgumentNullException">The value is null.</exception>
         public static void ThrowIfNull<T>(this T obj, string varName) where T : class
@@ -19,7 +20,7 @@ namespace PowerUp
         }
 
         /// <summary>
-        ///     Verify that the object is null.
+        ///     Verify that a object is null.
         /// </summary>
         /// <param name="obj">Object to verify</param>
         /// <returns>True if the object is null.</returns>
@@ -27,12 +28,28 @@ namespace PowerUp
             obj == null;
 
         /// <summary>
-        ///     Verify that the object is not null.
+        ///     Verify that a nullable object is null.
+        /// </summary>
+        /// <param name="obj">Object to verify</param>
+        /// <returns>True if the object is null.</returns>
+        public static bool IsNull<T>(this T? obj) where T : struct =>
+            !obj.HasValue;
+
+        /// <summary>
+        ///     Verify that a object is not null.
         /// </summary>
         /// <param name="obj">Object to verify</param>
         /// <returns>True if the object is not null.</returns>
         public static bool IsNotNull<T>(this T obj) where T : class =>
             obj != null;
+
+        /// <summary>
+        ///     Verify that a nullable object is not null.
+        /// </summary>
+        /// <param name="obj">Object to verify</param>
+        /// <returns>True if the nullable object is not null.</returns>
+        public static bool IsNotNull<T>(this T? obj) where T : struct =>
+            obj.HasValue;
 
         /// <summary>
         ///     Verify that the object value is included between the lower and upper bound.
