@@ -1,7 +1,6 @@
 # PowerUp, extension methods library for .Net CORE
-<img src="https://raw.githubusercontent.com/lucaleone/Personal-website/master/Git%20resources/PowerUpNuget.png" width="50" title="PowerUp Icon">  
-PowerUp is an extension methods library for .Net CORE, it add usefull functionalities so the framework.<br />
-__What is different about this library?__<br />
+<img src="https://raw.githubusercontent.com/lucaleone/Personal-website/master/Git%20resources/PowerUpNuget.png" width="50" title="PowerUp Icon"> PowerUp is an extension methods library for .Net CORE, it add usefull functionalities so the framework.
+## What is different about this library?
 ⏩ Lightweight: the goal is not to contains 5k methods, but to only have everyday usefull methods (in my opinion 😁)<br />
 🚀 .Net CORE compatible<br />
 🥊 Unit tested<br />
