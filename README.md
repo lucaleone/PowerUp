@@ -7,6 +7,12 @@
 🤓 100% documented<br />
 
 All the extension method are explained and a [Raison d'être](https://en.wikipedia.org/wiki/Raison_d%27%C3%AAtre) is provided in the following documentation.
+### Contents
+1. [StringExtensions](https://github.com/lucaleone/PowerUp/blob/master/README.md#stringextensions)
+2. [EnumExtensions](https://github.com/lucaleone/PowerUp/blob/master/README.md#enumextensions)
+3. [CollectionExtensions](https://github.com/lucaleone/PowerUp/blob/master/README.md#collectionextensions)
+4. [GenericExtensions](https://github.com/lucaleone/PowerUp/blob/master/README.md#genericextensions)
+5. [AzureExtensions](https://github.com/lucaleone/PowerUp/blob/master/README.md#azureextensions)
 ## StringExtensions
 ### IsInteger
 Simplify the syntax necessary to verify wehather the string content is an inter or not.<br>
