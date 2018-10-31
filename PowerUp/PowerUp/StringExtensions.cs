@@ -15,10 +15,14 @@ namespace PowerUp
         public static bool IsInteger(this string s) =>
             int.TryParse(s, out _);
 
+        /// <summary>
+        ///     Removes from a string the content of the parameter string
+        /// </summary>
+        /// <param name="remove">Remove this string.</param>
+        /// <returns>A string with the desired content removed.</returns>
         public static string Remove(this string s, string remove) =>
             s.Replace(remove, string.Empty);
 
-        
         /// <summary>
         ///     Convert a Sting to an enum value of type <see cref="T" />
         /// </summary>
