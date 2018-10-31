@@ -8,8 +8,8 @@
     <Copyright>2018 Luca Leone All Rights Reserved</Copyright>
     <PackageProjectUrl>https://github.com/lucaleone/PowerUp</PackageProjectUrl>
     <RepositoryUrl>https://github.com/lucaleone/PowerUp</RepositoryUrl>
-    <PackageId>PowerupCore.Azure</PackageId>
-    <PackageTags>netCore, Azure, extensionmethods</PackageTags>
+    <PackageId>PowerupCore.Web</PackageId>
+    <PackageTags>netCore, Azure, web, extensionmethods</PackageTags>
     <PackageIconUrl>https://raw.githubusercontent.com/lucaleone/Personal-website/master/Git%20resources/PowerUpNuget.png</PackageIconUrl>
     <PackageLicenseUrl>https://opensource.org/licenses/MIT</PackageLicenseUrl>
     <Win32Resource />

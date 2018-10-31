@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2046
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PowerUp", "PowerUp\PowerUp.csproj", "{DAFE16AB-F41C-4C8B-AEF3-FBBC7E9779E3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PowerUp", "PowerUp\PowerUp.csproj", "{DAFE16AB-F41C-4C8B-AEF3-FBBC7E9779E3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PowerUp.Azure", "PowerUp.Azure\PowerUp.Azure.csproj", "{6652E5A1-F1AD-4485-93C7-455F4AAD8C65}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PowerUp.Web", "PowerUp.Azure\PowerUp.Web.csproj", "{6652E5A1-F1AD-4485-93C7-455F4AAD8C65}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{8B80DEF0-19DF-4FD1-A445-82355B4ED566}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PowerUp.Tests", "PowerUp.Tests\PowerUp.Tests.csproj", "{B498ACA3-AFC3-477A-BB24-56ABB6E0F7A9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PowerUp.Tests", "PowerUp.Tests\PowerUp.Tests.csproj", "{B498ACA3-AFC3-477A-BB24-56ABB6E0F7A9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,9 +1,8 @@
 ﻿using System;
-using Microsoft.WindowsAzure.Storage;
 
-namespace PowerUp.Azure
+namespace PowerUp.Web
 {
-    public static class AzureExtensions
+    public static class CloudStorageAccount
     {
         /// <summary>
         ///     Parses redundantly the 2 connection strings and returns a Microsoft.WindowsAzure.Storage.CloudStorageAccount
@@ -19,12 +18,12 @@ namespace PowerUp.Azure
         ///     A Microsoft.WindowsAzure.Storage.CloudStorageAccount object constructed from the values provided in the
         ///     connection string.
         /// </returns>
-        public static CloudStorageAccount RedundantParse(string connectionString1,
+        public static Microsoft.WindowsAzure.Storage.CloudStorageAccount RedundantParse(string connectionString1,
                                                          string connectionString2)
         {
-            return CloudStorageAccount.TryParse(connectionString1, out var storageAccount)
+            return Microsoft.WindowsAzure.Storage.CloudStorageAccount.TryParse(connectionString1, out var storageAccount)
                 ? storageAccount
-                : CloudStorageAccount.Parse(connectionString2);
+                : Microsoft.WindowsAzure.Storage.CloudStorageAccount.Parse(connectionString2);
         }
     }
 }

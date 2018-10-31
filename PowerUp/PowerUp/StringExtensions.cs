@@ -15,6 +15,10 @@ namespace PowerUp
         public static bool IsInteger(this string s) =>
             int.TryParse(s, out _);
 
+        public static string Remove(this string s, string remove) =>
+            s.Replace(remove, string.Empty);
+
+        
         /// <summary>
         ///     Convert a Sting to an enum value of type <see cref="T" />
         /// </summary>
