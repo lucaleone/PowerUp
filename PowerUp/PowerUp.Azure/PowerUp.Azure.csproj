@@ -6,7 +6,7 @@
     <Authors>Luca Leone</Authors>
     <Description>PowerUp extension methods library for .Net CORE</Description>
     <Copyright>2018 Luca Leone All Rights Reserved</Copyright>
-    <PackageProjectUrl>https://luca-leone.firebaseapp.com/</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/lucaleone/PowerUp</PackageProjectUrl>
     <RepositoryUrl>https://github.com/lucaleone/PowerUp</RepositoryUrl>
     <PackageId>PowerupCore.Azure</PackageId>
     <PackageTags>netCore, Azure, extensionmethods</PackageTags>
@@ -14,6 +14,8 @@
     <PackageLicenseUrl>https://opensource.org/licenses/MIT</PackageLicenseUrl>
     <Win32Resource />
     <LangVersion>7.3</LangVersion>
+    <Version>1.0.1</Version>
+    <RepositoryType>Library</RepositoryType>
   </PropertyGroup>
 
   <ItemGroup>
