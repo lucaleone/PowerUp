@@ -4,7 +4,7 @@
 [PowerupCore Nuget](https://www.nuget.org/packages/PowerupCore)<br />
 [PowerupCore Azure Nuget](https://www.nuget.org/packages/PowerupCore.Azure)<br />
 ## What is different about this library?
-⏩ Lightweight: the goal is not to contains 5k methods, but to only have everyday usefull methods (in my opinion 😁)<br />
+⏩ Lightweight: the goal is not to contains 5k methods, but to only have everyday useful methods (in my opinion 😁)<br />
 🚀 .Net CORE compatible<br />
 🥊 Unit tested<br />
 🤓 100% documented<br />
