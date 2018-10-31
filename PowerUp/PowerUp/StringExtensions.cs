@@ -18,6 +18,7 @@ namespace PowerUp
         /// <summary>
         ///     Removes from a string the content of the parameter string
         /// </summary>
+        /// <see cref="https://github.com/lucaleone/PowerUp/blob/master/README.md#remove"/>
         /// <param name="remove">Remove this string.</param>
         /// <returns>A string with the desired content removed.</returns>
         public static string Remove(this string s, string remove) =>
