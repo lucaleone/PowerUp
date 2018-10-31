@@ -1,5 +1,5 @@
 # PowerUp, extension methods library for .Net CORE
-[](https://raw.githubusercontent.com/lucaleone/Personal-website/master/Git%20resources/PowerUpNuget.png) PowerUp is an extension methods library for .Net CORE, it add usefull functionalities to the framework.<br />
+![](https://raw.githubusercontent.com/lucaleone/PowerUp/master/Resources/PowerUpNuget.png) PowerUp is an extension methods library for .Net CORE, it add usefull functionalities to the framework.<br />
 ## Download
 [PowerupCore Nuget](https://www.nuget.org/packages/PowerupCore)<br />
 [PowerupCore Azure Nuget](https://www.nuget.org/packages/PowerupCore.Azure)<br />
@@ -25,6 +25,16 @@ To remove repetitive code
 if("42".IsInteger())
   Foo();
 ```
+### Remove
+Removes from a string the content of the parameter string.<br>
+__Why?__<br>
+To remove repetitive code
+```csharp
+"My text".Remove("My") // result: " text"
+// instead of
+"My text".Replace("My", string.Empty); // result: " text"
+  Foo();
+```
 ### Format
 Gives a shorter syntax for the string's method _Format_.<br>
 __Why?__<br>
@@ -47,7 +57,7 @@ private enum TestEnum
     Val3
 }
 
-var enumVar = "Val1".ToEnum<TestEnum>()
+var enumVar = "Val1".ToEnum<TestEnum>();
 ```
 ## EnumExtensions
 ### GetDescription<>
@@ -118,6 +128,35 @@ if(5.Between(2, 8))
 if(7.Between(7, 12, BetweenOptions.Inclusive))
   Foo();
 ```
+## LoggerExtensions
+### LogThisMethod
+Allows to simply log information about the calling method.<br>
+__Why?__<br>
+To avoid boring code, and copy paste problem 
+the tipical scenario is at the beginning of a Controller method like:
+```csharp
+[HttpPut]
+[Route("[action]")]
+[Produces("application/json")]
+[ProducesResponseType(typeof(Product), StatusCodes.Status201Created)]
+[ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
+public async Task<IActionResult> AddProduct([FromBody] NewProduct newProduct)
+{
+    _logger.LogDebug($"{DateTime.UtcNow:dd/MMM/yyyy} | 32: CatalogController.AddProduct()}");
+    if (!ModelState.IsValid)
+        return BadRequest(ModelState);
+    ....
+```
+the logging method can now be simply:
+```csharp
+...
+public async Task<IActionResult> AddProduct([FromBody] NewProduct newProduct)
+{
+    _logger.LogThisMethod();
+    ...
+```
+It's easy from the example to see how much it can reduce the ammount of code and the possibility of errors
+
 ## AzureExtensions
 ### RedundantParse
 The storage access keys in Azure are used in authentication for accessing the storage account.<br>
