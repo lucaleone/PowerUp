@@ -1,4 +1,5 @@
 ﻿using System;
+using JetBrains.Annotations;
 
 namespace PowerUp
 {
@@ -14,6 +15,8 @@ namespace PowerUp
         /// <param name="obj">Object to verify</param>
         /// <param name="varName">The name of the variable to test</param>
         /// <exception cref="ArgumentNullException">The value is null.</exception>
+        /// <see cref="https://www.jetbrains.com/help/resharper/2017.3/Contract_Annotations.html"/>
+        [ContractAnnotation("null => stop")]
         public static void ThrowIfNull<T>(this T obj, string varName) where T : class
         {
             if (obj.IsNull())
@@ -44,6 +47,8 @@ namespace PowerUp
         /// <see cref="https://github.com/lucaleone/PowerUp/new/master?readme=1#isnull-and-isnotnull" />
         /// <param name="obj">Object to verify</param>
         /// <returns>True if the object is not null.</returns>
+        /// <see cref="https://www.jetbrains.com/help/resharper/2017.3/Contract_Annotations.html"/>
+        [ContractAnnotation("null => stop")]
         public static bool IsNotNull<T>(this T obj) where T : class =>
             obj != null;
 
@@ -53,6 +58,8 @@ namespace PowerUp
         /// <see cref="https://github.com/lucaleone/PowerUp/new/master?readme=1#isnull-and-isnotnull" />
         /// <param name="obj">Object to verify</param>
         /// <returns>True if the nullable object is not null.</returns>
+        /// <see cref="https://www.jetbrains.com/help/resharper/2017.3/Contract_Annotations.html"/>
+        [ContractAnnotation("null => stop")]
         public static bool IsNotNull<T>(this T? obj) where T : struct =>
             obj.HasValue;
 
